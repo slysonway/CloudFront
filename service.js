@@ -1,6 +1,10 @@
 'use strict';
 
-function init() {
+var API_URL
+
+function init(url) {
+  API_URL = url
+  
     var tbody = createTable('user_container', ['Nom', 'Prénom', 'Email', 'Date', 'Created Date', 'Updated Date', 'Delete Date']);
     getAllUsersAjax(function(callback) {
         if (callback != null) {
@@ -27,7 +31,7 @@ function getAllUsersAjax(callback) {
         }
       }
     };
-    request.open('GET', process.env.API_URL + '/user');
+    request.open('GET', API_URL + '/user');
     request.send();
   }
 
